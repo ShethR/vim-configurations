@@ -183,3 +183,6 @@ set rtp+=/usr/local/opt/fzf
 "
 " ctrlsf ----------------------------
 map <SPACE>s :CtrlSF 
+
+" Remove highlights after the word search with two <ESC>
+nnoremap <esc><esc> :noh<return>
