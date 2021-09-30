@@ -1,5 +1,8 @@
 " Plugins will be downloaded under the specified directory.
 
+autocmd!
+set nocompatible
+
 call plug#begin('~/.local/share/nvim/site/plugged')
 
 " Declare the list of plugins.
@@ -29,10 +32,14 @@ Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug '~/.local/share/nvim/site/plugged/YouCompleteMe'
 " PyDocstring
-Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
-" List ends here. Plugins become visible to Vim after this call.
-call plug#end()
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 
+" CSV file pretty view
+Plug 'chrisbra/csv.vim'
+call plug#end()
+" List ends here. Plugins become visible to Vim after this call.
+
+syntax enable
 set tabstop=4 " The width of a TAB is set to 4.  Still it is a \t. It is just that Vim will interpret it to be having a width of 4.
 set softtabstop=4
 set shiftwidth=4
@@ -64,15 +71,16 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set cursorline
 "
 " PyDocstring
+let g:pydocstring_enable_mapping=0
 let g:pydocstring_formatter = 'google'
-nmap <silent> <C-p> :Pydocstring<cr>
-nmap <silent> <C-p><C-p> :PydocstringFormat<cr>
+nnoremap <silent> <C-p> :Pydocstring<CR>
+nnoremap <silent> <C-p><C-p> :PydocstringFormat<CR>
 
 " Navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 imap jj <Esc>
 nnoremap <S-j> :m .+1<CR>==
 nnoremap <S-k> :m .-2<CR>==
