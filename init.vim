@@ -29,7 +29,8 @@ Plug 'dense-analysis/ale'
 Plug 'https://github.com/ludovicchabant/vim-gutentags.git'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug '~/.local/share/nvim/site/plugged/YouCompleteMe'
 " PyDocstring
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
@@ -167,4 +168,4 @@ let g:ale_fixers = {
     \ 'sh': ['shfmt'],
     \ 'yaml': ['prettier'],
     \}
-let b:ale_fix_on_save = 1
+let b:ale_fix_on_save=1
