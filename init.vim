@@ -130,8 +130,22 @@ autocmd BufWinEnter * silent NERDTreeMirror
 let NERDTreeMapOpenInTab='\r'
 
 
-" Fzf ------------------------------
+function GenerateGithubLink()
+" function GenerateGithubLink()
+  " Get the current branch name and string the new line chars
+  let branch = substitute(system('git branch --show-current'), '\n\+$', '', '')
+  " Get the current repo url, parse it
+  let url = system('git config --get remote.origin.url')
+  let raw_repo_root = split(url, ":")[1]
+  let repo_root = split(raw_repo_root, ".git")[0]
+  let file_name = @%
+  let line_nbr = line(".")
+  " Print full github url
+  echo 'https://github.com/' . repo_root . '/blob/' . branch . '/' . file_name . '#L' . line_nbr
+endfunction
+command! GenerateGithubLink call GenerateGithubLink()
 
+" Fzf ------------------------------
 " file finder mapping
 nmap ,e :Files<CR>
 " tags (symbols) in current file finder mapping
@@ -160,7 +174,7 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Liners & Fixers
-let g:ale_linters = {'python': ['flake8', 'pydocstyle']}
+let g:ale_linters = {'python': ['flake8', 'pydocstyle'], 'yaml': ['yamllint']}
 let g:ale_fixers = {
     \ "*": ['remove_trailing_lines', 'trim_whitespace'],
     \ 'javascript': ['prettier', 'eslint'],
