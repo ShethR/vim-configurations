@@ -217,6 +217,10 @@ set statusline+=\ %f
 set statusline+=%=
 set statusline+=\ %{LinterStatus()}
 
+"ycm conflit fix for tagnine
+let g:ycm_key_list_select_completion = ['<C-j>']
+let g:ycm_key_list_previous_completion =  ['<C-k>']
+
 lua <<EOF
  require('tabnine').setup({
   disable_auto_comment=true,
