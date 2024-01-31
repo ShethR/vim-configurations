@@ -11,7 +11,6 @@ vim.g.mapleader = ' '
 -- ==                             KEY MAPPINGS                             == --
 -- ========================================================================== --
 
-
 -- keybindings
 
 -- Copy/Paste/Delete
@@ -25,3 +24,10 @@ bind('n', 'U', '<C-r>')
 
 -- Select all text in current buffer
 bind('n', '<leader>a', '<cmd>keepjumps normal! ggVG<cr>')
+
+-- Navigate between vim split panes
+vim.api.nvim_set_keymap('n', '<c-k>', '<cmd>wincmd k<CR>', {silent = true})
+vim.api.nvim_set_keymap('n', '<c-j>', '<cmd>wincmd j<CR>', {silent = true})
+vim.api.nvim_set_keymap('n', '<c-h>', '<cmd>wincmd h<CR>', {silent = true})
+vim.api.nvim_set_keymap('n', '<c-l>', '<cmd>wincmd l<CR>', {silent = true})
+

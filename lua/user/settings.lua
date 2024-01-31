@@ -44,7 +44,7 @@ vim.opt.number = true
 vim.opt.encoding = 'utf-8'
 
 -- Enable mouse support
-vim.opt.mouse = 'a'
+vim.opt.mouse = 'r'
 
 -- Look for a tag file in the git folder
 -- I shouldn't have to use `cwd` but here we are
@@ -62,3 +62,6 @@ vim.opt.errorformat:append('%f:%l:%c%p%m')
 
 -- show vim mode - normal, visual etc.
 vim.opt.showmode = false
+-- Activate Delete key
+vim.opt.backspace = { "indent", "eol", "start" }
+
